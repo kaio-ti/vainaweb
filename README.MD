@@ -6,11 +6,15 @@ API criada para controle de dados de usuários, no qual: nome, telefone, CPF e C
 
 Para rodar a API utilize o comando `docker-compose up`
 
+## Deploy
+
+As requisições serão feitas no deploy da API: https://vainawebapi.herokuapp.com/
+
 ## Métodos
 
 <h3 align="center">Cadastro de usuários</h3>
 
-> POST /register - Formato da requisição
+> POST users/register - Formato da requisição
 
 ```
 {
@@ -26,7 +30,7 @@ Para rodar a API utilize o comando `docker-compose up`
 
 Em caso de sucesso, a resposta será:
 
-> POST /register - Formato da resposta - STATUS 201
+> POST users/register - Formato da resposta - STATUS 201
 
 ```
 {
@@ -42,7 +46,7 @@ Em caso de sucesso, a resposta será:
 ```
 Caso esteja faltando alguma chave no corpo da requisição, a resposta será:
 
-> POST /register - Formato da requisição
+> POST users/register - Formato da requisição
 
 ```
 {
@@ -55,7 +59,7 @@ Caso esteja faltando alguma chave no corpo da requisição, a resposta será:
 }
 ```
 
-> POST /register - Formato da resposta - STATUS 400
+> POST users/register - Formato da resposta - STATUS 400
 
 ```
 {
@@ -65,7 +69,7 @@ Caso esteja faltando alguma chave no corpo da requisição, a resposta será:
 
 Caso tenha alguma chave a mais no corpo da requisição, a resposta será:
 
-> POST /register - Formato da requisição
+> POST users/register - Formato da requisição
 
 ```
 {
@@ -80,7 +84,7 @@ Caso tenha alguma chave a mais no corpo da requisição, a resposta será:
 }
 ```
 
-> POST /register - Formato da resposta - STATUS 400
+> POST users/register - Formato da resposta - STATUS 400
 
 ```
 {
