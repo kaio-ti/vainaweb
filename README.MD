@@ -42,6 +42,19 @@ Em caso de sucesso, a resposta será:
 ```
 Caso esteja faltando alguma chave no corpo da requisição, a resposta será:
 
+> POST /register - Formato da requisição
+
+```
+{
+  "phone": "99999999",
+  "CPF": "00000000011",
+  "CEP": "71705035",
+  "Street": "avenida contorno",
+  "City": "Brasília",
+  "State": "DF"
+}
+```
+
 > POST /register - Formato da resposta - STATUS 400
 
 ```
@@ -49,6 +62,32 @@ Caso esteja faltando alguma chave no corpo da requisição, a resposta será:
   "message": "Missing fields"
 }
 ```
+
+Caso tenha alguma chave a mais no corpo da requisição, a resposta será:
+
+> POST /register - Formato da requisição
+
+```
+{
+  "name": "user",
+  "phone": "99999999",
+  "CPF": "00000000011",
+  "CEP": "71705035",
+  "Street": "avenida contorno",
+  "City": "Brasília",
+  "State": "DF",
+  "a mais": "value"
+}
+```
+
+> POST /register - Formato da resposta - STATUS 400
+
+```
+{
+  "message": "The key: 'a mais' is not allowed"
+}
+```
+
 
 <h3 align="center">Login de usuários</h3>
 
@@ -208,6 +247,25 @@ Em caso de sucesso a resposta será:
     "City": "Brasília",
     "State": "DF"
   }
+```
+
+Caso tenha uma chave não permitida no corpo da requisição, a resposta será:
+
+> PATCH /users/:uuid - Formato da requisição 
+
+```
+{
+  "nome": "Kaio Iwakiri",
+  "chave qualquer": "valor qualquer"
+}
+```
+
+> PATCH /users/:uuid - Formato da resposta - STATUS 400 
+
+```
+{
+  "message": "The key: 'chave qualquer' is not allowed"
+}
 ```
 
 <h3 align="center">Remover usuário</h3>
