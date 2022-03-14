@@ -6,6 +6,10 @@ import AppError from "../errors/AppError";
 
 export const authenticateUser = async (CPF: string, next: NextFunction) => {
   try {
+    if (CPF.length !== 11) {
+      throw new AppError("CPF must have 11 charcters", 400);
+    }
+
     const usersRepository = getCustomRepository(UsersRepository);
     const user = await usersRepository.findByCPF(CPF);
 

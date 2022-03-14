@@ -4,6 +4,9 @@ import AppError from "../errors/AppError";
 import UsersRepository from "../repositories/user.repository";
 
 export const findCPF = async (cpf: string) => {
+  if (cpf.length !== 11) {
+    throw new AppError("CPF must have 11 characters", 400);
+  }
   const usersRepository = getCustomRepository(UsersRepository);
   const user = await usersRepository.findByCPF(cpf);
 

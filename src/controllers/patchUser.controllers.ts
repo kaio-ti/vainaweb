@@ -7,7 +7,8 @@ export const editUser = async (
   next: NextFunction
 ) => {
   try {
-    const user = await updateUser(req.body);
+    const { uuid } = req.params;
+    const user = await updateUser(req.body, uuid, next);
     if (user) {
       return res.send(user);
     }

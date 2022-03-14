@@ -46,9 +46,24 @@ export default class ViaCEP {
 
 export const registerUser = async (body: IUserRequest) => {
   const { name, phone, CPF, CEP, Street, City, State } = body;
+  const allowedKeys = [
+    "name",
+    "phone",
+    "CPF",
+    "CEP",
+    "Street",
+    "City",
+    "State",
+  ];
 
   if (!name || !phone || !CPF || !CEP || !Street || !City || !State) {
     throw new AppError("Missing fields", 400);
+  }
+
+  for (let key in body) {
+    if (!allowedKeys.includes(key)) {
+      throw new AppError(`The key: '${key}' is not allowed`, 400);
+    }
   }
 
   if (CPF.length !== 11) {

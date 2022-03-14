@@ -1,12 +1,15 @@
 import UsersRepository from "../repositories/user.repository";
 import { getCustomRepository } from "typeorm";
+import AppError from "../errors/AppError";
+import { Response } from "express";
 
-export const deleteUser = async (req: any, res: any) => {
-  const { CPF } = req.params;
-
+export const deleteUser = async (uuid: string) => {
   const usersRepository = getCustomRepository(UsersRepository);
+  const user = await usersRepository.findOne(uuid);
 
-  const deletedUser = await usersRepository.delete(CPF);
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
 
-  return res.status(200).json({ message: "User deleted" });
+  await usersRepository.delete(uuid);
 };
