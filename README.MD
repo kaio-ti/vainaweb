@@ -8,7 +8,7 @@ Para rodar a API utilize o comando `docker-compose up`
 
 ## Deploy
 
-As requisições serão feitas no deploy da API: https://vainawebapi.herokuapp.com/
+As requisições serão feitas no [deploy da API](https://vainawebapi.herokuapp.com/)
 
 ## Métodos
 
